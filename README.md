@@ -43,6 +43,10 @@ npm start -- <command> [args]
 | `browse [limit]` | Read posts (default 2) |
 | `agg <duration>` | Run continuously (e.g., `30s`, `5m`, `1h`) |
 | `reset` | Delete all users |
+| `service start <duration>` | Start daemon (background) |
+| `service stop` | Stop daemon |
+| `service restart` | Restart daemon |
+| `service status` | Show daemon PID, uptime, restarts |
 
 ## Examples
 
@@ -59,4 +63,11 @@ npm start -- following
 
 # Continuous aggregation
 npm start -- agg 30s
+
+# Daemon mode (background, auto-restart on crash)
+npm start -- service start 30s
+npm start -- service status
+npm start -- service stop
+
+# Logs at ~/.gator/logs/daemon-YYYY-MM-DD.log
 ```

@@ -2,6 +2,8 @@ import { setUser, readConfig } from "./config"
 import { CommandsRegistry, handlerAddFeed, handlerAgg, handlerGetFeeds, handlerListUsers, handlerLogin, handlerRegister, handlerReset, handlerFollow, handlerGetFollowing, handlerUnfollow, registerCommand, runCommand, handlerBrowse } from "./commands";
 import { middlewareLoggedIn } from "./middleware";
 
+import { handlerService } from "./service-commands";
+
 async function main() {
   const registry: CommandsRegistry = {};
 
@@ -16,6 +18,7 @@ async function main() {
   registerCommand(registry, 'following', middlewareLoggedIn(handlerGetFollowing));
   registerCommand(registry, 'unfollow', middlewareLoggedIn(handlerUnfollow));
   registerCommand(registry, 'browse', middlewareLoggedIn(handlerBrowse));
+  registerCommand(registry, 'service', handlerService);
 
   const args = process.argv.slice(2);
 
